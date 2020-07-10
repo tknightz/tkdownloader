@@ -26,7 +26,7 @@ function checkValid(str) {
     else if(result_mobile){
         process(result_mobile);
     }
-    return false;
+    else return false;
 }
 
 function process(result){

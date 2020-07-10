@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Download Video, Audio from Youtube.</title>
+    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="../static/roller.css">
+    <link rel="stylesheet" href="../static/spinner_audio.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="functional">
+           <div class="logo">
+               <img src="../static//images/logo.png" alt="">
+           </div>
+            <div class="input_link">
+                <input type="text" placeholder="Paste link here." id="input_link">
+            </div>
+            
+            <div class="loading" id="loading">
+                <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            </div>
+            
+            <div class="error_info" id="error_info">
+                <h2>Có thể do link bị lỗi! Sorry.</h2>
+            </div>
+            
+            <div class="info_video" id="info_video">
+                <div class="thumbnail">
+                    <img src="https://images.squarespace-cdn.com/content/v1/5a5906400abd0406785519dd/1552662149940-G6MMFW3JC2J61UBPROJ5/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/baelen.jpg?format=1500w" class="video_image" id="video_image" alt="">
+                </div>
+                <div class="info_download" id="div_download">
+                    <div class="text_info">
+                        <h2 class="title" id="video_title">This is title video.</h2>
+                        <h4 class="channel" id="video_channel">My Channel</h4>
+                    </div>
+                    <div class="download">
+                        <div class="btn btn_download-audio" id="dl_audio">
+                            <h4 id="text_dl_audio">Download Audio</h4>
+                            <div id="spinner_audio" class="spinner_audio">
+                              <div class="double-bounce1"></div>
+                              <div class="double-bounce2"></div>
+                            </div>
+                        </div>
+                        <div class="btn btn_download-video" id="dl_video">
+                            <h4 id="text_dl_video">Download Video</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../static/index.js"></script>
+</body>
+
+</html>

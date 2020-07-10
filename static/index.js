@@ -17,20 +17,28 @@ let clicked = true;
 
 function checkValid(str) {
     let patt = /https:\/\/www\.youtube\.com\/watch\?v=(.{11})/i;
+    let pattmobile = /https:\/\/youtu\.be\/(.{11})/i;
     let result = str.match(patt);
+    let result_mobile = str.match(pattmobile);
     if(result){
-        console.log(result[0]);
-        info_video.style.display = 'none';
-        error_info.style.display = 'none';
-        loading.style.display = 'flex';
-        if(result[1] !== id){
-            id = result[1];
-            clicked = false;
-        }
-        url = result[0];
-        getVideo(result);   
-    };
+        process(result);
+    }
+    else if(result_mobile){
+        process(result_mobile);
+    }
     return false;
+}
+
+function process(result){
+    info_video.style.display = 'none';
+    error_info.style.display = 'none';
+    loading.style.display = 'flex';
+    if(result[1] !== id){
+        id = result[1];
+        clicked = false;
+    }
+    url = result[0];
+    getVideo(result);   
 }
 
 function getVideo(link){

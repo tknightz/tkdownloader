@@ -20,9 +20,11 @@ def download():
 @app.route('/download_audio', methods=['POST'])
 def download_audio():
     data = request.get_json()
-    Downloader(data['url']).downloadAudio()
     filename = './DownloadFiles/' + data['id'] + '.mp3'
-    rv = send_file(filename)
+    if os.path.isfile(filename):
+        rv = send_file(filename)
+    else:
+        Downloader(data['url']).downloadAudio()
     os.remove(filename)
     return rv
 

@@ -1,7 +1,6 @@
 import os
 from flask import Flask, request, render_template, send_file
 from downloader import Downloader
-from validfilename import validFilename
 
 
 app = Flask(__name__)
@@ -22,7 +21,7 @@ def download():
 def download_audio():
     data = request.get_json()
     Downloader(data['url']).downloadAudio()
-    filename = './DownloadFiles/' + validFilename(str(data['title']))
+    filename = './DownloadFiles/' + data['id'] + '.mp3'
     rv = send_file(filename)
     os.remove(filename)
     return rv

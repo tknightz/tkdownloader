@@ -7,7 +7,7 @@ class Downloader:
         self.url = url
         self.filename = ''
         self.yt_opts = {}
-        self.yt_opts['outtmpl'] = './DownloadFiles/%(title)s.%(ext)s'
+        self.yt_opts['outtmpl'] = './DownloadFiles/%(id)s.%(ext)s'
         self.info = None
 
     def downloadVideo(self):

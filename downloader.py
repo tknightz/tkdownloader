@@ -3,11 +3,11 @@ import argparse
 
 
 class Downloader:
-    def __init__(self, url):
+    def __init__(self, url, sid=''):
         self.url = url
         self.filename = ''
         self.yt_opts = {}
-        self.yt_opts['outtmpl'] = './DownloadFiles/%(id)s.%(ext)s'
+        self.yt_opts['outtmpl'] = f'./DownloadFiles/%(id)s_{sid}.%(ext)s'
         self.info = None
 
     def downloadVideo(self):

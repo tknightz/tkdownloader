@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, render_template, send_file
 from downloader import Downloader
+from randomid import get_random_string
 
 
 app = Flask(__name__)
@@ -20,11 +21,10 @@ def download():
 @app.route('/download_audio', methods=['POST'])
 def download_audio():
     data = request.get_json()
-    filename = './DownloadFiles/' + data['id'] + '.mp3'
-    if os.path.isfile(filename):
-        rv = send_file(filename)
-    else:
-        Downloader(data['url']).downloadAudio()
+    sid = get_random_string(6)
+    filename = './DownloadFiles/' + f'{data["id"]}_{sid}.mp3'
+    Downloader(data['url'], sid).downloadAudio()
+    rv = send_file(filename, as_attachment=True)
     os.remove(filename)
     return rv
 

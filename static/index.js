@@ -20,8 +20,13 @@ let clickedVideo = true;
 let result = null;
 
 function checkValid(str) {
+    // regrex for full link : https://www.youtube.com/watch?v={id}
     let patt = /https:\/\/www\.youtube\.com\/watch\?v=(.{11})/i;
+
+    // regrex for link share in mobile : https://youtu.be/{id}
+    let pattmobile = /https:\/\/youtu\.be\/(.{11})/i;
     let result = str.match(patt);
+    let result_mobile = str.match(pattmobile);
     if(result){
         info_video.style.display = 'none';
         error_info.style.display = 'none';
@@ -33,8 +38,21 @@ function checkValid(str) {
         }
         url = result[0];
         getVideo(result);   
-    };
-    return false;
+    }
+    else if(result_mobile){
+        info_video.style.display = 'none';
+        error_info.style.display = 'none';
+        loading.style.display = 'flex';
+        if(result[1] !== id){
+            id = result[1];
+            clickedAudio = false;
+            clickedVideo = false;
+        }
+        url = result_mobile[0];
+        getVideo(result_mobile);   
+
+    }
+    else return false;
 }
 
 function getVideo(link){

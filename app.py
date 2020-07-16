@@ -35,9 +35,11 @@ def convert_audio():
     thread1.start()
 
     def generate():
+        percent = 1
         while thread1.is_alive():
-            yield '{"Converting": true}'
-            time.sleep(1)
+            yield '{"Converting":' + str(percent) + '}'
+            percent += 3.1415
+            time.sleep(2)
 
         yield '{"songid":' + f'"{songid}"' + '}'
 

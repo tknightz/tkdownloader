@@ -1,5 +1,4 @@
 import os
-import requests
 from flask import Flask, request, render_template, send_file, Response
 from downloader import Downloader
 from threading import Thread

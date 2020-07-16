@@ -28,31 +28,25 @@ function checkValid(str) {
     let result = str.match(patt);
     let result_mobile = str.match(pattmobile);
     if(result){
-        info_video.style.display = 'none';
-        error_info.style.display = 'none';
-        loading.style.display = 'flex';
-        if(result[1] !== id){
-            id = result[1];
-            clickedAudio = false;
-            clickedVideo = false;
-        }
-        url = result[0];
-        getVideo(result);   
+        process(result);
     }
     else if(result_mobile){
-        info_video.style.display = 'none';
-        error_info.style.display = 'none';
-        loading.style.display = 'flex';
-        if(result[1] !== id){
-            id = result[1];
-            clickedAudio = false;
-            clickedVideo = false;
-        }
-        url = result_mobile[0];
-        getVideo(result_mobile);   
-
+        process(result_mobile);
     }
     else return false;
+}
+
+function process(result){
+    info_video.style.display = 'none';
+    error_info.style.display = 'none';
+    loading.style.display = 'flex';
+    if(result[1] !== id){
+        id = result[1];
+        clickedAudio = false;
+        clickedVideo = false;
+    }
+    url = result[0];
+    getVideo(result);   
 }
 
 function getVideo(link){

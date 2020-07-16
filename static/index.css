@@ -10,8 +10,6 @@ body{
     background-size: cover;
 }
 
-
-
 .container{
     position: relative;
     width: 100%;
@@ -21,12 +19,18 @@ body{
 
 .functional{
     margin: 7% auto;
-    width: 80%;
+    width: 90%;
 }
 
 .logo{
     display: flex;
+    padding: 10px;
+    box-sizing: border-box;
     justify-content: center;
+}
+
+.logo img{
+    width: 100%;
 }
 
 .input_link input{
@@ -158,12 +162,21 @@ body{
 }
 
 #text_dl_audio, #text_dl_video{
-    margin: 10px;
+    color: white;
+    margin: 9px;
 }
 
 @media only screen and (min-width: 768px){
     .info_video{
         flex-direction: row;
+    }
+
+    .functional{
+        width: 80%;
+    }
+
+    .logo img{
+        width: 50%;
     }
     
     .thumbnail{
@@ -200,7 +213,6 @@ body{
 }
 
 @media only screen and (min-width: 1280px){
-   
     .functional{
         width: 70%;
     }
@@ -216,6 +228,9 @@ body{
     
     .channel{
         font-size: 1.25rem;
+    }
+    #text_dl_audio, #text_dl_video{
+        margin: 10px;
     }
 
 } 

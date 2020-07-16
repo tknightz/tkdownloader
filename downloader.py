@@ -3,17 +3,18 @@ import argparse
 
 
 class Downloader:
-    def __init__(self, url, sid=''):
+    def __init__(self, url, songid=''):
         self.url = url
         self.filename = ''
+        self.songid = songid
         self.yt_opts = {}
-        self.yt_opts['outtmpl'] = f'./DownloadFiles/%(id)s_{sid}.%(ext)s'
+        self.yt_opts['outtmpl'] = f'./DownloadFiles/%(id)s-{songid}.%(ext)s'
         self.info = None
 
-    def downloadVideo(self):
-        self.yt_opts['format'] = '137'
+    def downloadVideo(self, quality):
+        self.yt_opts['format'] = 'bestvideo[ext=mp4]+bestaudio[ext=m4a]'
         with youtube_dl.YoutubeDL(self.yt_opts) as ydl:
-            ydl.download([self.url])
+            return ydl.download([self.url])
 
     def downloadAudio(self):
         self.yt_opts['format'] = 'bestaudio'
@@ -24,7 +25,7 @@ class Downloader:
                 'preferredquality': '192'
             }]
         with youtube_dl.YoutubeDL(self.yt_opts) as ydl:
-            ydl.download([self.url])
+            return ydl.download([self.url])
 
     def extractInfo(self):
         with youtube_dl.YoutubeDL() as ydl:

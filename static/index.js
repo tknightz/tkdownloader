@@ -88,26 +88,7 @@ function errInfo(){
 function downloadAudio(songid){
     spinner_audio.style.display = 'none';
     text_dl_audio.style.display = 'block';
-    let endpoint = '/download_audio';
-    let data = {
-        "id": id,
-        "url": url,
-        "title": title,
-        "songid": songid
-    };
-    let otherPram = {
-        headers:{
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(data),
-        method: "POST"
-    }
-    fetch(endpoint, otherPram)
-    .then(response => {return response})
-    .then(data => {return data.blob()})
-        .then(blob => {
-            createDownload(blob,'mp3');
-        });
+    createDownload(id+'-'+songid, 'mp3');
 }
 
 function converAudio(){
@@ -168,18 +149,10 @@ function convertVideo(){
     text_dl_video.style.display = 'none';
     spinner_video.style.display = 'block';
     let endpoint = '/convert_video';
-    let yt_format = ['133','134','135','136','137'];
-    let quality = '133';
-    for(let temp of result.formats){
-        if(yt_format.includes(temp.format_id) && parseInt(temp.format_id)>parseInt(quality)){
-            quality = temp.format_id;
-        }
-    }
     let data = {
         "id": id,
         "url": url,
         "title": title,
-        "quality": quality
     };
     let otherPram = {
         headers:{
@@ -228,32 +201,13 @@ function convertVideo(){
 function downloadVideo(songid){
     spinner_video.style.display = 'none';
     text_dl_video.style.display = 'block';
-    let endpoint = '/download_video';
-    let data = {
-        "id": id,
-        "url": url,
-        "title": title,
-        "songid": songid
-    };
-    let otherPram = {
-        headers:{
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(data),
-        method: "POST"
-    }
-    fetch(endpoint, otherPram)
-    .then(response => {return response})
-    .then(data => {return data.blob()})
-        .then(blob => {
-            createDownload(blob,'mp4');
-        });
+    createDownload(id+'-'+songid, 'mp4');
 }
 
-function createDownload(blob, ext){
-    let url = window.URL.createObjectURL(blob);
+function createDownload(name, ext){
+    // let url = window.URL.createObjectURL(blob);
     let a = document.createElement('a');
-    a.href = url;
+    a.href = window.location.origin+'/download_file/'+name;
     a.download = title+'.'+ext;
     document.body.appendChild(a);
     a.click();

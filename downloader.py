@@ -8,10 +8,10 @@ class Downloader:
         self.filename = ''
         self.songid = songid
         self.yt_opts = {}
-        self.yt_opts['outtmpl'] = f'./DownloadFiles/%(id)s-{songid}.%(ext)s'
+        self.yt_opts['outtmpl'] = f'./DownloadFiles/%(id)s-{songid}-%(title)s.%(ext)s'
         self.info = None
 
-    def downloadVideo(self, quality):
+    def downloadVideo(self):
         self.yt_opts['format'] = 'bestvideo[ext=mp4]+bestaudio[ext=m4a]'
         with youtube_dl.YoutubeDL(self.yt_opts) as ydl:
             return ydl.download([self.url])

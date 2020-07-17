@@ -17,7 +17,7 @@ class Downloader:
             return ydl.download([self.url])
 
     def downloadAudio(self):
-        self.yt_opts['format'] = 'bestaudio[ext=mp3]'
+        self.yt_opts['format'] = 'bestaudio'
         # self.yt_opts['postprocessors'] = [
         #     {
         #         'key': 'FFmpegExtractAudio',

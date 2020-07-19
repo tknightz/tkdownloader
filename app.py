@@ -22,6 +22,28 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/get_download_video', methods=['POST'])
+def get_download_video():
+    data = request.get_json()
+    songid = get_random_string(6)
+    try:
+        Downloader(data['url'], songid=songid).downloadVideo()
+        return f'http://tkdownloader.herokuapp.com/download_file/{data["id"]}-{songid}'
+    except:
+        return 'Can\'t download this file. Maybe your link was broken.'
+
+
+@app.route('/get_download_audio', methods=['POST'])
+def get_download_audio():
+    data = request.get_json()
+    songid = get_random_string(6)
+    try:
+        Downloader(data['url'], songid=songid).downloadAudio()
+        return f'http://tkdownloader.herokuapp.com/download_file/{data["id"]}-{songid}'
+    except:
+        return 'Can\'t download this file. Maybe your link was broken.'
+
+
 @app.route('/convert_audio', methods=['POST'])
 def convert_audio():
     data = request.get_json()

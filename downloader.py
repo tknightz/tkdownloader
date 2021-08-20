@@ -18,12 +18,6 @@ class Downloader:
 
     def downloadAudio(self):
         self.yt_opts['format'] = 'bestaudio'
-        # self.yt_opts['postprocessors'] = [
-        #     {
-        #         'key': 'FFmpegExtractAudio',
-        #         'preferredcodec': 'mp3',
-        #         'preferredquality': '192'
-        #     }]
         with youtube_dl.YoutubeDL(self.yt_opts) as ydl:
             return ydl.download([self.url])
 

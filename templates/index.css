@@ -98,7 +98,7 @@ body{
 }
 
 .channel{
-    font-size: 0.75rem
+    font-size: 0.75rem;
     padding: 5px 0;
 }
 
@@ -148,7 +148,7 @@ body{
     }
 
     .text_info{
-        height: 70%;
+        height: calc(100% - 4.5rem);
         width: 100%;
         margin-bottom: 0;
         padding: 0;
@@ -167,7 +167,7 @@ body{
     }
 
     .download{
-        height: 30%;
+        height: 4.5rem;
     }
     .btn{
         padding: 0;

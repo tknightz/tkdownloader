@@ -14,7 +14,7 @@ def convert(data, songid, audio=True):
         Downloader(data['url'], songid=songid).downloadVideo()
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./static')
 
 
 @app.route('/', methods=['GET'])
